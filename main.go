@@ -48,7 +48,7 @@ func backend(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println("INFO ", "fetching for ", handle)
+	fmt.Printf("INFO fetching for %s\n", handle)
 	resp, err := http.Get(fmt.Sprintf("%s?handle=%s", resolveHandle, handle))
 	if err != nil {
 		fmt.Println("ERROR ", err.Error())
