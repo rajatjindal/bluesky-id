@@ -18,11 +18,6 @@ const (
 
 func init() {
 	spinhttp.Handle(func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path == "/" {
-			ui(w, r)
-			return
-		}
-
 		if r.URL.Path == "/api" {
 			backend(w, r)
 			return
@@ -30,14 +25,6 @@ func init() {
 
 		http.Error(w, "not found", http.StatusNotFound)
 	})
-}
-
-//go:embed index.html
-var indexPage string
-
-func ui(w http.ResponseWriter, r *http.Request) {
-	w.Header().Add("content-type", "text/html")
-	fmt.Fprint(w, indexPage)
 }
 
 func backend(w http.ResponseWriter, r *http.Request) {
